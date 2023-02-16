@@ -20,9 +20,10 @@ struct Movie: Codable {
     
     init(from decoder: Decoder) throws {
         let value = try decoder.container(keyedBy: CodingKeys.self)
-        
+          
         title = try value.decodeIfPresent(String.self, forKey: .title)
         poster = try value.decodeIfPresent(String.self, forKey: .poster)
         releaseDate = try value.decodeIfPresent(String.self, forKey: .releaseDate)
+        
     }
 }

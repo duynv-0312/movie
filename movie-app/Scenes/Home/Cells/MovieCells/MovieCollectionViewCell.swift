@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MovieCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var movieName: UILabel!
@@ -29,6 +30,15 @@ class MovieCollectionViewCell: UICollectionViewCell {
         
         releaseDate.font = .systemFont(ofSize: 12, weight: .light)
         releaseDate.textColor = .secondaryLabel
+    }
+    
+    func configCell(movies: Movie) {
+        movieName.text = movies.title
+        releaseDate.text = movies.releaseDate
+        let posterImageString = Urls.shared.getImage(urlString: movies.poster ?? "")
+        
+        let posterUrl = URL(string: posterImageString)
+        posterImage.sd_setImage(with: posterUrl)
     }
     
 }

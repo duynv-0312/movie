@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MovieResponse: Codable {
+struct MoviesResponse: Codable {
     var results: [Movie]?
     
     enum CodingKeys: String, CodingKey {
@@ -18,6 +18,6 @@ struct MovieResponse: Codable {
         let value = try decoder.container(keyedBy: CodingKeys.self)
         
         results = try value.decodeIfPresent([Movie].self, forKey: .results)
-       
     }
 }
+

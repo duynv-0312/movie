@@ -8,35 +8,28 @@
 import UIKit
 
 class APICaller {
+    
     static let shared = APICaller()
     
-    init() { }
+    private init() { }
     
-    
-    // lấy dữ liệu từ 1 endpoint( popular ,upcoming.....) và trả về 1 mảng movies
-    
-    func getListMovie(urlString: String) -> [Movie] {
-        if let url = URL(string: urlString) {
-            
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                guard let data = data else { return }
-                if let error = error {
-                    print("Error: \(error)")
-                }
-                
-                do {
-                    let movieRes = try JSONDecoder().decode(MovieResponse.self, from: data)
-                    print(movieRes)
-                } catch let error {
-                    print("Decode Error: \(error)")
-                }
-                
-            }.resume()
-            
+    func getMovies(urlString: String, completion: @escaping (([Movie]) -> Void)) {
+        print(urlString)
+        guard let url = URL(string: urlString) else  {
+            return
         }
         
-        return []
+        URLSession.shared.dataTask(with: url) {data,_,error in
+            let decoder = JSONDecoder()
+            do {
+                guard let data = data else { return }
+                let moviesResponse = try decoder.decode(MoviesResponse.self, from: data)
+                let listMovie: [Movie] = moviesResponse.results ?? []
+                completion(listMovie)
+            } catch let error  {
+                print("Error:\(error)")
+            }
+        }.resume()
         
     }
-    
 }

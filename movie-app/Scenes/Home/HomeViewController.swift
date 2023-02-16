@@ -8,26 +8,63 @@
 import UIKit
 
 final class HomeViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
+    
+    var topRatedMovies: [Movie] = []
+    var popularMovies: [Movie] = []
+    var upComingMovies: [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
-        let popularUrlString = "https://api.themoviedb.org/3/movie/popular?api_key=0be3b2bb50dd9c07fdf0e4ae5ee23b4e&language=en-US&page=1"
-        
-        let upcomingUrlString = "https://api.themoviedb.org/3/movie/upcoming?api_key=0be3b2bb50dd9c07fdf0e4ae5ee23b4e&language=en-US&page=1"
-        let topRatedUrlString =
-        "https://api.themoviedb.org/3/movie/top_rated?api_key=https%3A%2F%2Fapi.themoviedb.org%2F3%2Fmovie%2Fupcoming%3Fapi_key%3D0be3b2bb50dd9c07fdf0e4ae5ee23b4e%26language%3Den-US%26page%3D1&language=en-US&page=1"
-        APICaller.shared.getListMovie(urlString: popularUrlString)
-        APICaller.shared.getListMovie(urlString: upcomingUrlString)
-        APICaller.shared.getListMovie(urlString: topRatedUrlString)
+        getMovies()
     }
     
     private func configView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "ListMovieTableViewCell", bundle: nil), forCellReuseIdentifier: "ListMovieTableViewCell")
+        tableView.separatorStyle = .none
+        tableView.register(UINib(nibName: "ListMovieTableViewCell", bundle: nil),
+                           forCellReuseIdentifier: "ListMovieTableViewCell")
+        tableView.register(UINib(nibName: "MovieHeader", bundle: nil),
+                           forHeaderFooterViewReuseIdentifier: "MovieHeader")
+    }
+    
+    func getMovies() {
+        
+        let topRatedURL = Urls.shared.getTopRatedUrl()
+        
+        APICaller.shared.getMovies(urlString: topRatedURL) { [weak self] movies in
+            print("f1111ff\(movies)")
+            DispatchQueue.main.async() {
+                self?.topRatedMovies = movies
+                self?.tableView.reloadData()
+            }
+        }
+        
+        let popularUrl = Urls.shared.getPopularUrl()
+        APICaller.shared.getMovies(urlString: popularUrl) { [weak self] movies in
+            DispatchQueue.main.async() {
+                self?.popularMovies = movies
+                self?.tableView.reloadData()
+            }
+        }
+        
+        let upComingUrl = Urls.shared.getUpComingUrl()
+        APICaller.shared.getMovies(urlString: upComingUrl) { [weak self] movies in
+            DispatchQueue.main.async() {
+                self?.upComingMovies = movies
+                self?.tableView.reloadData()
+            }
+        }
+        
+    }
+    
+    func toMovieDetail(movie: Movie) {
+        let vc = MovieDetailViewController()
+        vc.configController(movie: movie)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -40,8 +77,20 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListMovieTableViewCell") as! ListMovieTableViewCell
+        if indexPath.section == 0 {
+            cell.configCell(movies: topRatedMovies)
+        } else if indexPath.section == 1 {
+            cell.configCell(movies: popularMovies)
+        } else {
+            cell.configCell(movies: upComingMovies)
+        }
+        
+        cell.tappedMovie = { [weak self] movie in
+            self?.toMovieDetail(movie: movie)
+        }
+        
         return cell
     }
     
@@ -50,6 +99,22 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
+        let movieHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "MovieHeader") as! MovieHeader
+        if section == 0 {
+            movieHeader.configView(title: "Top Rated")
+        }
+        else if section == 1 {
+            movieHeader.configView(title: "Popular")
+        }
+        else {
+            movieHeader.configView(title: "Upcoming")
+            
+        }
+        
+        return movieHeader
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
     }
 }
