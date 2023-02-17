@@ -6,9 +6,19 @@
 //
 
 import UIKit
+import SDWebImage
 
 final class MovieDetailViewController: UIViewController {
-
+    
+    @IBOutlet weak var backDropImageView: UIImageView!
+    @IBOutlet weak var posterBackgroundView: UIView!
+    @IBOutlet weak var posterImageView: UIImageView!
+    @IBOutlet weak var movieName: UILabel!
+    @IBOutlet weak var movieTime: UILabel!
+    @IBOutlet weak var releaseDate: UILabel!
+    @IBOutlet weak var overviewHeader: UILabel!
+    @IBOutlet weak var overviewDescription: UILabel!
+    
     var movie: Movie? {
         didSet {
             guard let movieDetail = movie else { return }
@@ -22,7 +32,27 @@ final class MovieDetailViewController: UIViewController {
     }
     
     private func configView() {
+        posterBackgroundView.layer.cornerRadius = 12
+        posterBackgroundView.contentMode = .scaleToFill
         
+        
+        posterImageView.layer.cornerRadius = 12
+        posterImageView.clipsToBounds = true
+        posterImageView.contentMode = .scaleAspectFill
+        
+        movieName.font = .boldSystemFont(ofSize: 18)
+
+        movieTime.font = .systemFont(ofSize: 15,weight: .light)
+        movieTime.textColor = .secondaryLabel
+        
+        releaseDate.font = .systemFont(ofSize: 15, weight: .light)
+        releaseDate.textColor = .secondaryLabel
+        
+        overviewHeader.font = .boldSystemFont(ofSize: 24)
+        overviewHeader.text = "Overview"
+        
+        overviewDescription.textColor = .secondaryLabel
+        overviewDescription.numberOfLines = 0
     }
     
     func loadData(movie: Movie) {
@@ -38,8 +68,21 @@ final class MovieDetailViewController: UIViewController {
     
     private func updateUI(movie: Movie) {
         // Update UI man hinh
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
             self?.title = movie.title
+            
+            let backDropImageString = Urls.shared.getImage(urlString: movie.backDropPath ?? "")
+            let backDropUrl = URL(string: backDropImageString)
+            self?.backDropImageView.sd_setImage(with: backDropUrl)
+            
+            let posterImageString = Urls.shared.getImage(urlString: movie.poster ?? "")
+            let posterUrl = URL(string: posterImageString)
+            self?.posterImageView.sd_setImage(with: posterUrl)
+            
+            self?.movieName.text = movie.title
+            self?.movieTime.text = "Runtime: \(movie.runtime ?? 0)"
+            self?.releaseDate.text = "Release Date: " + (movie.releaseDate ?? "")
+            self?.overviewDescription.text = movie.overview
         }
     }
 }

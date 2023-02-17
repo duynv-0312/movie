@@ -8,13 +8,12 @@
 import UIKit
 import SDWebImage
 
-class MovieCollectionViewCell: UICollectionViewCell {
+final class MovieCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var movieName: UILabel!
     @IBOutlet weak var releaseDate: UILabel!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,8 +34,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
     func configCell(movies: Movie) {
         movieName.text = movies.title
         releaseDate.text = movies.releaseDate
-        let posterImageString = Urls.shared.getImage(urlString: movies.poster ?? "")
         
+        let posterImageString = Urls.shared.getImage(urlString: movies.poster ?? "")
         let posterUrl = URL(string: posterImageString)
         posterImage.sd_setImage(with: posterUrl)
     }

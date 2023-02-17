@@ -11,6 +11,7 @@ struct Movie: Codable {
     var id: Int?
     var title: String?
     var poster: String?
+    var backDropPath: String?
     var releaseDate: String?
     
     var overview: String?
@@ -21,6 +22,7 @@ struct Movie: Codable {
         case id = "id"
         case title = "title"
         case poster = "poster_path"
+        case backDropPath = "backdrop_path"
         case releaseDate = "release_date"
         
         case overview = "overview"
@@ -34,6 +36,7 @@ struct Movie: Codable {
         id = try value.decodeIfPresent(Int.self, forKey: .id)
         title = try value.decodeIfPresent(String.self, forKey: .title)
         poster = try value.decodeIfPresent(String.self, forKey: .poster)
+        backDropPath = try value.decodeIfPresent(String.self, forKey: .backDropPath)
         releaseDate = try value.decodeIfPresent(String.self, forKey: .releaseDate)
         
         overview = try value.decodeIfPresent(String.self, forKey: .overview)
