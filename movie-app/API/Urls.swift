@@ -35,4 +35,8 @@ struct Urls {
         let urlString = "https://image.tmdb.org/t/p/w500/\(urlString)?api_key=\(key)"
         return urlString
     }
+    
+    func getMovieDetailUrl(id: Int) -> String {
+        return baseUrl + "/movie/\(id)?api_key=\(key)"
+    }
 }

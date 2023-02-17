@@ -22,6 +22,7 @@ final class HomeViewController: UIViewController {
     }
     
     private func configView() {
+        title = "Home"
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -36,7 +37,6 @@ final class HomeViewController: UIViewController {
         let topRatedURL = Urls.shared.getTopRatedUrl()
         
         APICaller.shared.getMovies(urlString: topRatedURL) { [weak self] movies in
-            print("f1111ff\(movies)")
             DispatchQueue.main.async() {
                 self?.topRatedMovies = movies
                 self?.tableView.reloadData()
@@ -63,7 +63,7 @@ final class HomeViewController: UIViewController {
     
     func toMovieDetail(movie: Movie) {
         let vc = MovieDetailViewController()
-        vc.configController(movie: movie)
+        vc.loadData(movie: movie)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

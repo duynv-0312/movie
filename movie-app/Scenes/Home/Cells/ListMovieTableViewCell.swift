@@ -55,7 +55,6 @@ extension ListMovieTableViewCell: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
         tappedMovie?(movies[indexPath.row])
     }
 }
