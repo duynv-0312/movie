@@ -18,6 +18,7 @@ final class MovieDetailViewController: UIViewController {
     @IBOutlet weak var releaseDate: UILabel!
     @IBOutlet weak var overviewHeader: UILabel!
     @IBOutlet weak var overviewDescription: UILabel!
+    @IBOutlet weak var movieFavorite: UIButton!
     
     var movie: Movie? {
         didSet {
@@ -53,6 +54,11 @@ final class MovieDetailViewController: UIViewController {
         
         overviewDescription.textColor = .secondaryLabel
         overviewDescription.numberOfLines = 0
+        movieFavorite.tintColor = .lightGray
+    }
+    
+    @IBAction func likeButtonAction(_ sender: Any) {
+        movieFavorite.tintColor =  movieFavorite.tintColor == .systemPink ? .lightGray : .systemPink
     }
     
     func loadData(movie: Movie) {

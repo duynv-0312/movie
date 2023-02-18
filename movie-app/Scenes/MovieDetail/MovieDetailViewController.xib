@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailViewController" customModule="movie_app" customModuleProvider="target">
             <connections>
                 <outlet property="backDropImageView" destination="9NO-OR-aFR" id="txS-9p-CMF"/>
+                <outlet property="movieFavorite" destination="lRO-0t-aam" id="hYW-ii-57Q"/>
                 <outlet property="movieName" destination="3dx-Kt-DZV" id="0yq-eI-DH9"/>
                 <outlet property="movieTime" destination="xMl-Pa-STV" id="ioF-hk-h96"/>
                 <outlet property="overviewDescription" destination="J3I-zc-JOO" id="PZF-3E-Ph3"/>
@@ -82,10 +84,23 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRO-0t-aam">
+                            <rect key="frame" x="337" y="270.33333333333331" width="90" height="23.666666666666686"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal">
+                                <imageReference key="image" image="heart.fill" catalog="system" symbolScale="large"/>
+                            </state>
+                            <connections>
+                                <action selector="likeButtonAction:" destination="-1" eventType="touchUpInside" id="ufl-SE-Cd4"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="J3I-zc-JOO" secondAttribute="trailing" constant="16" id="5MU-aP-qKm"/>
+                        <constraint firstItem="lRO-0t-aam" firstAttribute="leading" secondItem="xMl-Pa-STV" secondAttribute="trailing" constant="-90" id="7RP-V1-aVe"/>
                         <constraint firstAttribute="trailing" secondItem="cm4-Au-wZ3" secondAttribute="trailing" constant="16" id="B0K-Xr-etB"/>
                         <constraint firstAttribute="trailing" secondItem="TXb-v2-SaV" secondAttribute="trailing" constant="16" id="JNT-Mg-Gfu"/>
                         <constraint firstAttribute="trailing" secondItem="xMl-Pa-STV" secondAttribute="trailing" constant="16" id="L6L-0s-tgX"/>
@@ -99,6 +114,8 @@
                         <constraint firstAttribute="trailing" secondItem="3dx-Kt-DZV" secondAttribute="trailing" constant="16" id="UkY-Xb-JcB"/>
                         <constraint firstItem="J3I-zc-JOO" firstAttribute="leading" secondItem="TXb-v2-SaV" secondAttribute="leading" id="YMD-jD-rIJ"/>
                         <constraint firstItem="3dx-Kt-DZV" firstAttribute="top" secondItem="9NO-OR-aFR" secondAttribute="bottom" constant="16" id="ac1-Ph-uDn"/>
+                        <constraint firstItem="lRO-0t-aam" firstAttribute="firstBaseline" secondItem="xMl-Pa-STV" secondAttribute="firstBaseline" id="dzR-RW-7Rd"/>
+                        <constraint firstAttribute="trailing" secondItem="lRO-0t-aam" secondAttribute="trailing" constant="16" id="gY8-PR-NMl"/>
                         <constraint firstItem="9NO-OR-aFR" firstAttribute="top" secondItem="9Ip-tB-hb1" secondAttribute="top" id="gfQ-8t-Wty"/>
                         <constraint firstItem="3dx-Kt-DZV" firstAttribute="leading" secondItem="FjD-Vt-pSl" secondAttribute="trailing" constant="16" id="jkZ-XG-GKh"/>
                         <constraint firstItem="cm4-Au-wZ3" firstAttribute="top" secondItem="xMl-Pa-STV" secondAttribute="bottom" constant="8" id="pox-IF-U1V"/>
@@ -123,6 +140,7 @@
     </objects>
     <resources>
         <image name="anhapp" width="460" height="287"/>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

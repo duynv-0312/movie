@@ -20,11 +20,12 @@
                     <connections>
                         <segue destination="EcV-vc-URq" kind="relationship" relationship="viewControllers" id="KTI-yn-y2B"/>
                         <segue destination="3hg-qs-Ioy" kind="relationship" relationship="viewControllers" id="QZV-JR-nUW"/>
+                        <segue destination="umP-Gg-7By" kind="relationship" relationship="viewControllers" id="tKg-pL-1b4"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gmT-wH-ek0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-198" y="-501"/>
+            <point key="canvasLocation" x="784" y="-564"/>
         </scene>
         <!--Home-->
         <scene sceneID="YIX-0k-AIc">
@@ -91,6 +92,23 @@
             </objects>
             <point key="canvasLocation" x="784" y="223"/>
         </scene>
+        <!--Account-->
+        <scene sceneID="Jmm-Es-p0K">
+            <objects>
+                <navigationController id="umP-Gg-7By" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Account" image="person.fill" catalog="system" id="FXC-Nk-ZQo"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5mu-nB-dIF">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="LLY-ar-RsD" kind="relationship" relationship="rootViewController" id="pvX-6z-u5J"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9gb-6b-Afv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2343" y="242"/>
+        </scene>
         <!--Favorites View Controller-->
         <scene sceneID="Y60-Uf-bL7">
             <objects>
@@ -107,10 +125,42 @@
             </objects>
             <point key="canvasLocation" x="784" y="982"/>
         </scene>
+        <!--Account View Controller-->
+        <scene sceneID="uKz-FM-wYD">
+            <objects>
+                <viewController id="LLY-ar-RsD" customClass="AccountViewController" customModule="movie_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3za-U9-k2T">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UOt-Fe-oMz">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="li1-wg-llP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UOt-Fe-oMz" firstAttribute="leading" secondItem="li1-wg-llP" secondAttribute="leading" id="MiD-sw-Bh3"/>
+                            <constraint firstItem="UOt-Fe-oMz" firstAttribute="top" secondItem="li1-wg-llP" secondAttribute="top" id="W0Q-YL-Xu1"/>
+                            <constraint firstItem="UOt-Fe-oMz" firstAttribute="bottom" secondItem="li1-wg-llP" secondAttribute="bottom" id="kbj-3I-mcw"/>
+                            <constraint firstItem="UOt-Fe-oMz" firstAttribute="trailing" secondItem="li1-wg-llP" secondAttribute="trailing" id="yRc-Z4-vvk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6yn-2K-pbF"/>
+                    <connections>
+                        <outlet property="tableView" destination="UOt-Fe-oMz" id="ByG-3y-4EC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yrw-u2-0sp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2341.2213740458014" y="1014.7887323943662"/>
+        </scene>
     </scenes>
     <resources>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

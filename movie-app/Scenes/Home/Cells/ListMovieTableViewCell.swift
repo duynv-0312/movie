@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListMovieTableViewCell: UITableViewCell {
+final class ListMovieTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     

@@ -29,6 +29,9 @@
 		04A94C86299DE49700797DC6 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 04A94C85299DE49700797DC6 /* SDWebImageMapKit */; };
 		04A94C90299E13D700797DC6 /* MovieHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A94C8F299E13D700797DC6 /* MovieHeader.swift */; };
 		04A94C92299E13E500797DC6 /* MovieHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A94C91299E13E500797DC6 /* MovieHeader.xib */; };
+		04AE63D529A10BCC0064728F /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE63D429A10BCC0064728F /* AccountViewController.swift */; };
+		04AE63DA29A11C020064728F /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE63D829A11C020064728F /* ProfileTableViewCell.swift */; };
+		04AE63DB29A11C020064728F /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AE63D929A11C020064728F /* ProfileTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,9 @@
 		0472C5B3299F4E5F006E0AA3 /* MovieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
 		04A94C8F299E13D700797DC6 /* MovieHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieHeader.swift; sourceTree = "<group>"; };
 		04A94C91299E13E500797DC6 /* MovieHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieHeader.xib; sourceTree = "<group>"; };
+		04AE63D429A10BCC0064728F /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		04AE63D829A11C020064728F /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		04AE63D929A11C020064728F /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,7 @@
 		0434E32B299CB2D3000AE66A /* movie-app */ = {
 			isa = PBXGroup;
 			children = (
+				04AE63D329A10B980064728F /* Account */,
 				0434E347299CB698000AE66A /* API */,
 				0434E343299CB3DE000AE66A /* Scenes */,
 				0434E32C299CB2D3000AE66A /* AppDelegate.swift */,
@@ -185,6 +192,24 @@
 			path = MovieDetail;
 			sourceTree = "<group>";
 		};
+		04AE63D329A10B980064728F /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				04AE63D729A11BCC0064728F /* ProfileInfoCell */,
+				04AE63D429A10BCC0064728F /* AccountViewController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		04AE63D729A11BCC0064728F /* ProfileInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				04AE63D829A11C020064728F /* ProfileTableViewCell.swift */,
+				04AE63D929A11C020064728F /* ProfileTableViewCell.xib */,
+			);
+			path = ProfileInfoCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -255,6 +280,7 @@
 				0434E33C299CB2D4000AE66A /* LaunchScreen.storyboard in Resources */,
 				0434E339299CB2D4000AE66A /* Assets.xcassets in Resources */,
 				0434E353299CBBBA000AE66A /* ListMovieTableViewCell.xib in Resources */,
+				04AE63DB29A11C020064728F /* ProfileTableViewCell.xib in Resources */,
 				0434E334299CB2D3000AE66A /* Main.storyboard in Resources */,
 				04A94C92299E13E500797DC6 /* MovieHeader.xib in Resources */,
 			);
@@ -269,6 +295,8 @@
 			files = (
 				0434E352299CBBBA000AE66A /* ListMovieTableViewCell.swift in Sources */,
 				0434E32D299CB2D3000AE66A /* AppDelegate.swift in Sources */,
+				04AE63D529A10BCC0064728F /* AccountViewController.swift in Sources */,
+				04AE63DA29A11C020064728F /* ProfileTableViewCell.swift in Sources */,
 				0434E368299CD437000AE66A /* Urls.swift in Sources */,
 				0434E337299CB2D3000AE66A /* movie_app.xcdatamodeld in Sources */,
 				0472C5B4299F4E5F006E0AA3 /* MovieDetailViewController.swift in Sources */,
