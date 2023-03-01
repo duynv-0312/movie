@@ -7,17 +7,26 @@
 
 import UIKit
 
-class LogOutTableViewCell: UITableViewCell {
-
+final class LogOutTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var logoutButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        configView()
     }
     
+    private func  configView() {
+        logoutButton.do {
+            $0.setTitle("Log out", for: .normal)
+            $0.titleLabel?.font = .boldSystemFont(ofSize: 28)
+            $0.tintColor = .secondaryLabel
+            $0.layer.cornerRadius = 20
+        }
+        
+        containerView.do {
+            $0.backgroundColor = .red
+        }
+        
+    }
 }

@@ -28,17 +28,10 @@ final class ProfileTableViewCell: UITableViewCell {
         nameProfile.tintColor = .systemPink
         
         containerProfileView.layer.cornerRadius = 12
-
+        containerProfileView.backgroundColor = .lightGray
     }
     
     @IBAction func signIn(_ sender: Any) {
-        
-        signInButton.tintColor = .red
-        
-        
-        
+        signInButton.tintColor = .green
     }
-    
-
-  
 }

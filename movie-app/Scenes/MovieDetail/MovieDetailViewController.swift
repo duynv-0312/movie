@@ -74,7 +74,7 @@ final class MovieDetailViewController: UIViewController {
     
     private func updateUI(movie: Movie) {
         // Update UI man hinh
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
             self?.title = movie.title
             
             let backDropImageString = Urls.shared.getImage(urlString: movie.backDropPath ?? "")
