@@ -68,7 +68,7 @@
                 <outlet property="posterImage" destination="IJ1-Su-8Ya" id="sXx-1o-IOp"/>
                 <outlet property="releaseDate" destination="Ju4-pv-2sK" id="6PL-Kr-3FC"/>
             </connections>
-            <point key="canvasLocation" x="239.69465648854961" y="-41.197183098591552"/>
+            <point key="canvasLocation" x="348" y="-36"/>
         </collectionViewCell>
     </objects>
 </document>

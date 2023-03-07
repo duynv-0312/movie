@@ -116,14 +116,29 @@
                     <view key="view" contentMode="scaleToFill" id="8Mz-t7-Hr5">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qn2-Wz-Jo8">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="r62-JA-1PH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="r62-JA-1PH" firstAttribute="trailing" secondItem="qn2-Wz-Jo8" secondAttribute="trailing" id="IoW-E2-ViK"/>
+                            <constraint firstItem="qn2-Wz-Jo8" firstAttribute="top" secondItem="r62-JA-1PH" secondAttribute="top" id="P5d-1M-mmI"/>
+                            <constraint firstItem="qn2-Wz-Jo8" firstAttribute="leading" secondItem="r62-JA-1PH" secondAttribute="leading" id="fgH-LC-3MS"/>
+                            <constraint firstItem="qn2-Wz-Jo8" firstAttribute="bottom" secondItem="r62-JA-1PH" secondAttribute="bottom" id="jxs-Xb-jME"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QSm-bN-eLc"/>
+                    <connections>
+                        <outlet property="tableView" destination="qn2-Wz-Jo8" id="szJ-Ri-m7j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7i-Z8-cuN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="784" y="982"/>
+            <point key="canvasLocation" x="783.96946564885491" y="981.69014084507046"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="uKz-FM-wYD">

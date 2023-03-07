@@ -18,6 +18,7 @@ final class ListMovieTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         configView()
+        
     }
     
     private func configView() {

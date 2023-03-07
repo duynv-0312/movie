@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Then
 
-struct Movie: Codable {
+struct Movie: Codable, Then {
     var id: Int?
     var title: String?
     var poster: String?
@@ -42,5 +43,16 @@ struct Movie: Codable {
         overview = try value.decodeIfPresent(String.self, forKey: .overview)
         runtime = try value.decodeIfPresent(Int.self, forKey: .runtime)
         voteAverage = try value.decodeIfPresent(Double.self, forKey: .voteAverage)
+    }
+    
+    init() {
+        id = nil
+        title = nil
+        poster = nil
+        backDropPath = nil
+        releaseDate = nil
+        overview = nil
+        runtime = nil
+        voteAverage = nil
     }
 }
